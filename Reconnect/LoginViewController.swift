@@ -25,7 +25,7 @@ class LoginViewController: UIViewController {
         let username = usernameField.text
         let password = passwordField.text
         
-        if (username == username && password == password) {
+        if (username == self.username && password == self.password) {
             performSegue(withIdentifier: "conversationsIdentifier", sender: self)
         } else {
             print("Incorrect user")
