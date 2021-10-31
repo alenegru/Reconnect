@@ -6,14 +6,12 @@
 //
 
 import UIKit
+import Firebase
 
 class LoginViewController: UIViewController {
     @IBOutlet weak var loginButton: UIButton!
-    @IBOutlet weak var usernameField: UITextField!
+    @IBOutlet weak var emailField: UITextField!
     @IBOutlet weak var passwordField: UITextField!
-    
-    let username: String = "ale"
-    let password: String = "parola"
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -22,14 +20,35 @@ class LoginViewController: UIViewController {
     
     
     @IBAction func loginButtonPressed(_ sender: Any) {
-        let username = usernameField.text
-        let password = passwordField.text
-        
-        if (username == self.username && password == self.password) {
-            performSegue(withIdentifier: "conversationsIdentifier", sender: self)
-        } else {
-            print("Incorrect user")
+        guard let email = emailField.text,
+              let password = passwordField.text,
+              !email.isEmpty,
+              !password.isEmpty,
+              password.count >= 6 else {
+                alertUserLoginError()
+                return
         }
+
+        // Firebase Log In
+        FirebaseAuth.Auth.auth().signIn(withEmail: email, password: password, completion: {authResult, error in
+                guard let result = authResult, error == nil else {
+                    print("Failed to log in user with email: \(email)")
+                    return
+                }
+
+                let user = result.user
+                UserDefaults.standard.setValue(email, forKey: "email")
+            
+                self.performSegue(withIdentifier: K.registerSegue, sender: self)
+        })
     }
     
+    func alertUserLoginError() {
+        let alert = UIAlertController(title: "Woops",
+                                      message: "Please enter all information to log in.",
+                                      preferredStyle: .alert)
+        alert.addAction(UIAlertAction(title:"Dismiss",
+                                      style: .cancel, handler: nil))
+        present(alert, animated: true)
+    }
 }
