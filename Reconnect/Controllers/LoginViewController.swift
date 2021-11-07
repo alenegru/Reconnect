@@ -7,11 +7,14 @@
 
 import UIKit
 import Firebase
+import JGProgressHUD
 
 class LoginViewController: UIViewController {
     @IBOutlet weak var loginButton: UIButton!
     @IBOutlet weak var emailField: UITextField!
     @IBOutlet weak var passwordField: UITextField!
+    
+    private let spinner = JGProgressHUD(style: .dark)
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -28,18 +31,25 @@ class LoginViewController: UIViewController {
                 alertUserLoginError()
                 return
         }
+        
+        spinner.show(in: view)
 
         // Firebase Log In
-        FirebaseAuth.Auth.auth().signIn(withEmail: email, password: password, completion: {authResult, error in
-                guard let result = authResult, error == nil else {
+        Auth.auth().signIn(withEmail: email, password: password, completion: {authResult, error in
+            
+            DispatchQueue.main.async {
+                self.spinner.dismiss()
+            }
+                
+            guard let result = authResult, error == nil else {
                     print("Failed to log in user with email: \(email)")
                     return
-                }
+            }
 
-                let user = result.user
+            let user = result.user
                 UserDefaults.standard.setValue(email, forKey: "email")
             
-                self.performSegue(withIdentifier: K.registerSegue, sender: self)
+            self.performSegue(withIdentifier: K.loginSegue, sender: self)
         })
     }
     

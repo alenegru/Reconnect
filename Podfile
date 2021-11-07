@@ -8,6 +8,10 @@ target 'Reconnect' do
   # Pods for Reconnect
 pod 'Firebase/Auth'
 pod 'Firebase/Firestore'
+pod 'Firebase/Database'
 pod 'Firebase/Analytics'
+pod 'MessageKit'
+pod 'JGProgressHUD'
+pod 'SDWebImage'
 
 end

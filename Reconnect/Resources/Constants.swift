@@ -13,6 +13,7 @@ struct K {
     static let appName = "Reconnect"
     static let registerSegue = "registerToChat"
     static let loginSegue = "loginToChat"
+    static let chatSegue = "chatSegue"
      
     struct FStore {
         static let collectionName = "messages"

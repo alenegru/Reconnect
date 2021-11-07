@@ -11,6 +11,9 @@
 		23830077272DA86300402D75 /* GoogleService-Info.plist in Resources */ = {isa = PBXBuildFile; fileRef = 23830076272DA86300402D75 /* GoogleService-Info.plist */; };
 		2383007D272DA9D400402D75 /* Message.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2383007C272DA9D400402D75 /* Message.swift */; };
 		2394B6FC272F41F9003FCFFE /* Constants.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2394B6FB272F41F8003FCFFE /* Constants.swift */; };
+		2394B70327382067003FCFFE /* DatabaseManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2394B70227382067003FCFFE /* DatabaseManager.swift */; };
+		2394B73727387427003FCFFE /* ChatViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2394B73627387427003FCFFE /* ChatViewController.swift */; };
+		2394B73A27388CE9003FCFFE /* Sender.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2394B73927388CE8003FCFFE /* Sender.swift */; };
 		23D088752726AD4000F208EB /* LoginViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 23D088742726AD4000F208EB /* LoginViewController.swift */; };
 		23D088782726AD4E00F208EB /* RegisterViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 23D088772726AD4E00F208EB /* RegisterViewController.swift */; };
 		23D0887E2726AE8B00F208EB /* ConversationsViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 23D0887D2726AE8B00F208EB /* ConversationsViewController.swift */; };
@@ -27,6 +30,9 @@
 		23830076272DA86300402D75 /* GoogleService-Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = "GoogleService-Info.plist"; sourceTree = "<group>"; };
 		2383007C272DA9D400402D75 /* Message.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Message.swift; sourceTree = "<group>"; };
 		2394B6FB272F41F8003FCFFE /* Constants.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Constants.swift; sourceTree = "<group>"; };
+		2394B70227382067003FCFFE /* DatabaseManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DatabaseManager.swift; sourceTree = "<group>"; };
+		2394B73627387427003FCFFE /* ChatViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ChatViewController.swift; sourceTree = "<group>"; };
+		2394B73927388CE8003FCFFE /* Sender.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Sender.swift; sourceTree = "<group>"; };
 		23D088742726AD4000F208EB /* LoginViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LoginViewController.swift; sourceTree = "<group>"; };
 		23D088772726AD4E00F208EB /* RegisterViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RegisterViewController.swift; sourceTree = "<group>"; };
 		23D0887D2726AE8B00F208EB /* ConversationsViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ConversationsViewController.swift; sourceTree = "<group>"; };
@@ -66,6 +72,7 @@
 			isa = PBXGroup;
 			children = (
 				2383007C272DA9D400402D75 /* Message.swift */,
+				2394B73927388CE8003FCFFE /* Sender.swift */,
 			);
 			path = Models;
 			sourceTree = "<group>";
@@ -85,8 +92,20 @@
 				23D0887D2726AE8B00F208EB /* ConversationsViewController.swift */,
 				23D088742726AD4000F208EB /* LoginViewController.swift */,
 				23D088772726AD4E00F208EB /* RegisterViewController.swift */,
+				2394B73627387427003FCFFE /* ChatViewController.swift */,
 			);
 			path = Controllers;
+			sourceTree = "<group>";
+		};
+		2394B7012738203C003FCFFE /* Resources */ = {
+			isa = PBXGroup;
+			children = (
+				23D5E0DD2722C18B0025821C /* SceneDelegate.swift */,
+				23D5E0DB2722C18B0025821C /* AppDelegate.swift */,
+				2394B6FB272F41F8003FCFFE /* Constants.swift */,
+				2394B70227382067003FCFFE /* DatabaseManager.swift */,
+			);
+			path = Resources;
 			sourceTree = "<group>";
 		};
 		23D5E0CF2722C18A0025821C = {
@@ -110,16 +129,14 @@
 		23D5E0DA2722C18B0025821C /* Reconnect */ = {
 			isa = PBXGroup;
 			children = (
+				2394B7012738203C003FCFFE /* Resources */,
 				2383007B272DA99600402D75 /* Controllers */,
 				2383007A272DA98E00402D75 /* Views */,
 				23830079272DA98500402D75 /* Models */,
 				23830076272DA86300402D75 /* GoogleService-Info.plist */,
-				23D5E0DB2722C18B0025821C /* AppDelegate.swift */,
-				23D5E0DD2722C18B0025821C /* SceneDelegate.swift */,
 				23D5E0E42722C18D0025821C /* Assets.xcassets */,
 				23D5E0E62722C18D0025821C /* LaunchScreen.storyboard */,
 				23D5E0E92722C18D0025821C /* Info.plist */,
-				2394B6FB272F41F8003FCFFE /* Constants.swift */,
 			);
 			path = Reconnect;
 			sourceTree = "<group>";
@@ -253,9 +270,12 @@
 				23D0887E2726AE8B00F208EB /* ConversationsViewController.swift in Sources */,
 				23D5E0E02722C18B0025821C /* ViewController.swift in Sources */,
 				23D5E0DC2722C18B0025821C /* AppDelegate.swift in Sources */,
+				2394B73A27388CE9003FCFFE /* Sender.swift in Sources */,
 				23D5E0DE2722C18B0025821C /* SceneDelegate.swift in Sources */,
 				2383007D272DA9D400402D75 /* Message.swift in Sources */,
 				2394B6FC272F41F9003FCFFE /* Constants.swift in Sources */,
+				2394B73727387427003FCFFE /* ChatViewController.swift in Sources */,
+				2394B70327382067003FCFFE /* DatabaseManager.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

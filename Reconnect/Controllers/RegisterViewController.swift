@@ -7,12 +7,15 @@
 
 import UIKit
 import Firebase
+import JGProgressHUD
 
 class RegisterViewController: UIViewController {
     @IBOutlet weak var usernameField: UITextField!
     @IBOutlet weak var emailField: UITextField!
     @IBOutlet weak var passwordField: UITextField!
     @IBOutlet weak var reEnterPasswordField: UITextField!
+    
+    private let spinner = JGProgressHUD(style: .dark)
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -34,18 +37,25 @@ class RegisterViewController: UIViewController {
                 return
         }
         
+        spinner.show(in: view)
+        
         FirebaseAuth.Auth.auth().createUser(withEmail: email, password: password, completion: { authResult, error in
             guard authResult != nil, error == nil else {
-                print("Error creating user")
+                self.alertUserRegisterError(message: "User with this email already exists.")
                 return
+            }
+            
+            DispatchQueue.main.async {
+                self.spinner.dismiss()
             }
 
             UserDefaults.standard.setValue(email, forKey: "email")
             UserDefaults.standard.setValue(username, forKey: "username")
             
+            DatabaseManager.shared.insertUser(with: User(username: username, email: email))
+            
             self.performSegue(withIdentifier: K.registerSegue, sender: self)
         })
-        
 
     }
     
