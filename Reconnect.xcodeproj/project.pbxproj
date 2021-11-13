@@ -14,6 +14,8 @@
 		2394B70327382067003FCFFE /* DatabaseManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2394B70227382067003FCFFE /* DatabaseManager.swift */; };
 		2394B73727387427003FCFFE /* ChatViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2394B73627387427003FCFFE /* ChatViewController.swift */; };
 		2394B73A27388CE9003FCFFE /* Sender.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2394B73927388CE8003FCFFE /* Sender.swift */; };
+		2394B73D2739255C003FCFFE /* NewConversationViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2394B73C2739255C003FCFFE /* NewConversationViewController.swift */; };
+		2394B74027399C77003FCFFE /* CalendarViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2394B73F27399C77003FCFFE /* CalendarViewController.swift */; };
 		23D088752726AD4000F208EB /* LoginViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 23D088742726AD4000F208EB /* LoginViewController.swift */; };
 		23D088782726AD4E00F208EB /* RegisterViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 23D088772726AD4E00F208EB /* RegisterViewController.swift */; };
 		23D0887E2726AE8B00F208EB /* ConversationsViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 23D0887D2726AE8B00F208EB /* ConversationsViewController.swift */; };
@@ -33,6 +35,8 @@
 		2394B70227382067003FCFFE /* DatabaseManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DatabaseManager.swift; sourceTree = "<group>"; };
 		2394B73627387427003FCFFE /* ChatViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ChatViewController.swift; sourceTree = "<group>"; };
 		2394B73927388CE8003FCFFE /* Sender.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Sender.swift; sourceTree = "<group>"; };
+		2394B73C2739255C003FCFFE /* NewConversationViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NewConversationViewController.swift; sourceTree = "<group>"; };
+		2394B73F27399C77003FCFFE /* CalendarViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CalendarViewController.swift; sourceTree = "<group>"; };
 		23D088742726AD4000F208EB /* LoginViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LoginViewController.swift; sourceTree = "<group>"; };
 		23D088772726AD4E00F208EB /* RegisterViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RegisterViewController.swift; sourceTree = "<group>"; };
 		23D0887D2726AE8B00F208EB /* ConversationsViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ConversationsViewController.swift; sourceTree = "<group>"; };
@@ -93,6 +97,8 @@
 				23D088742726AD4000F208EB /* LoginViewController.swift */,
 				23D088772726AD4E00F208EB /* RegisterViewController.swift */,
 				2394B73627387427003FCFFE /* ChatViewController.swift */,
+				2394B73C2739255C003FCFFE /* NewConversationViewController.swift */,
+				2394B73F27399C77003FCFFE /* CalendarViewController.swift */,
 			);
 			path = Controllers;
 			sourceTree = "<group>";
@@ -271,7 +277,9 @@
 				23D5E0E02722C18B0025821C /* ViewController.swift in Sources */,
 				23D5E0DC2722C18B0025821C /* AppDelegate.swift in Sources */,
 				2394B73A27388CE9003FCFFE /* Sender.swift in Sources */,
+				2394B73D2739255C003FCFFE /* NewConversationViewController.swift in Sources */,
 				23D5E0DE2722C18B0025821C /* SceneDelegate.swift in Sources */,
+				2394B74027399C77003FCFFE /* CalendarViewController.swift in Sources */,
 				2383007D272DA9D400402D75 /* Message.swift in Sources */,
 				2394B6FC272F41F9003FCFFE /* Constants.swift in Sources */,
 				2394B73727387427003FCFFE /* ChatViewController.swift in Sources */,

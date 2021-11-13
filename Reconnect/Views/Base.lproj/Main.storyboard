@@ -48,6 +48,15 @@
                                     <segue destination="gLO-Ms-sVQ" kind="show" identifier="loginIdentifier" id="r5t-Yi-KQ9"/>
                                 </connections>
                             </button>
+                            <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="Ltq-Aa-FuR">
+                                <rect key="frame" x="105" y="689" width="205" height="87"/>
+                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                <fontDescription key="fontDescription" type="system" pointSize="18"/>
+                                <state key="normal" title="Go to Calendar"/>
+                                <connections>
+                                    <segue destination="2tn-s8-vF0" kind="show" id="pns-Oh-6hf"/>
+                                </connections>
+                            </button>
                         </subviews>
                         <viewLayoutGuide key="safeArea" id="6Tk-OE-BBY"/>
                         <color key="backgroundColor" systemColor="systemBackgroundColor"/>
@@ -61,6 +70,22 @@
                 <placeholder placeholderIdentifier="IBFirstResponder" id="dkx-z0-nzr" sceneMemberID="firstResponder"/>
             </objects>
             <point key="canvasLocation" x="1047.8260869565217" y="91.741071428571431"/>
+        </scene>
+        <!--Calendar View Controller-->
+        <scene sceneID="0h9-5N-rWV">
+            <objects>
+                <viewController id="2tn-s8-vF0" customClass="CalendarViewController" customModule="Reconnect" customModuleProvider="target" sceneMemberID="viewController">
+                    <view key="view" contentMode="scaleToFill" id="mCU-0f-sNd">
+                        <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <viewLayoutGuide key="safeArea" id="dGy-Iw-wJv"/>
+                        <color key="backgroundColor" systemColor="systemBackgroundColor"/>
+                    </view>
+                    <navigationItem key="navigationItem" id="Rgo-iB-QjF"/>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="oXx-Ez-d55" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="804" y="860"/>
         </scene>
         <!--Login View Controller-->
         <scene sceneID="TNU-BR-eEx">
@@ -149,7 +174,14 @@
                         <viewLayoutGuide key="safeArea" id="tVj-fl-jwo"/>
                         <color key="backgroundColor" systemColor="systemBackgroundColor"/>
                     </view>
-                    <navigationItem key="navigationItem" title="Conversations" largeTitleDisplayMode="always" id="DwE-uC-VsW"/>
+                    <navigationItem key="navigationItem" title="Conversations" largeTitleDisplayMode="always" id="DwE-uC-VsW">
+                        <barButtonItem key="rightBarButtonItem" systemItem="compose" id="sJR-nb-AmF">
+                            <connections>
+                                <action selector="composeButtonPressed:" destination="FfS-Fo-Dp4" id="jNX-Jv-WKb"/>
+                                <segue destination="bAa-Oo-fjw" kind="presentation" identifier="searchSegue" id="Com-NW-lPN"/>
+                            </connections>
+                        </barButtonItem>
+                    </navigationItem>
                     <connections>
                         <outlet property="conversationsView" destination="OLu-Tp-xxR" id="xNv-0s-wkI"/>
                         <segue destination="kpt-Te-7Oa" kind="show" identifier="chatSegue" id="vwu-Df-7y3"/>
@@ -174,6 +206,31 @@
                 <placeholder placeholderIdentifier="IBFirstResponder" id="u3z-QS-wiO" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
             </objects>
             <point key="canvasLocation" x="3839" y="269"/>
+        </scene>
+        <!--New Conversation View Controller-->
+        <scene sceneID="Nb0-Bm-7rE">
+            <objects>
+                <viewController id="bAa-Oo-fjw" customClass="NewConversationViewController" customModule="Reconnect" customModuleProvider="target" sceneMemberID="viewController">
+                    <view key="view" contentMode="scaleToFill" id="IQf-Bg-zH1">
+                        <rect key="frame" x="0.0" y="0.0" width="414" height="842"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <searchBar contentMode="redraw" fixedFrame="YES" placeholder="Search for users.." translatesAutoresizingMaskIntoConstraints="NO" id="1xL-aX-Y1U">
+                                <rect key="frame" x="0.0" y="22" width="414" height="44"/>
+                                <autoresizingMask key="autoresizingMask" widthSizable="YES" flexibleMaxY="YES"/>
+                                <textInputTraits key="textInputTraits"/>
+                            </searchBar>
+                        </subviews>
+                        <viewLayoutGuide key="safeArea" id="aKf-hv-Pts"/>
+                        <color key="backgroundColor" systemColor="systemBackgroundColor"/>
+                    </view>
+                    <connections>
+                        <outlet property="searchBar" destination="1xL-aX-Y1U" id="Kql-a0-HXo"/>
+                    </connections>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="gbQ-vi-2hF" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="2809" y="975"/>
         </scene>
         <!--Register View Controller-->
         <scene sceneID="LF2-rk-U5g">

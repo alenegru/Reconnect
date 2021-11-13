@@ -62,6 +62,11 @@ class ConversationsViewController: UIViewController {
     private func fetchConversations() {
     }
     
+    @IBAction func composeButtonPressed(_ sender: UIBarButtonItem) {
+        
+    }
+    
+    
 }
     // MARK: - Table view data source
 extension ConversationsViewController: UITableViewDataSource, UITableViewDelegate {
