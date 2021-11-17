@@ -3,7 +3,7 @@
 	archiveVersion = 1;
 	classes = {
 	};
-	objectVersion = 51;
+	objectVersion = 52;
 	objects = {
 
 /* Begin PBXBuildFile section */
@@ -25,6 +25,7 @@
 		23D5E0E32722C18B0025821C /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 23D5E0E12722C18B0025821C /* Main.storyboard */; };
 		23D5E0E52722C18D0025821C /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 23D5E0E42722C18D0025821C /* Assets.xcassets */; };
 		23D5E0E82722C18D0025821C /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 23D5E0E62722C18D0025821C /* LaunchScreen.storyboard */; };
+		B0C4DFC827456B1A00DAFDB8 /* CalendarKit in Frameworks */ = {isa = PBXBuildFile; productRef = B0C4DFC727456B1A00DAFDB8 /* CalendarKit */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -58,6 +59,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				14FFC9A70ECDDDBF2D3C8B90 /* Pods_Reconnect.framework in Frameworks */,
+				B0C4DFC827456B1A00DAFDB8 /* CalendarKit in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -174,6 +176,9 @@
 			dependencies = (
 			);
 			name = Reconnect;
+			packageProductDependencies = (
+				B0C4DFC727456B1A00DAFDB8 /* CalendarKit */,
+			);
 			productName = Reconnect;
 			productReference = 23D5E0D82722C18B0025821C /* Reconnect.app */;
 			productType = "com.apple.product-type.application";
@@ -201,6 +206,9 @@
 				Base,
 			);
 			mainGroup = 23D5E0CF2722C18A0025821C;
+			packageReferences = (
+				B0C4DFC627456B1A00DAFDB8 /* XCRemoteSwiftPackageReference "CalendarKit" */,
+			);
 			productRefGroup = 23D5E0D92722C18B0025821C /* Products */;
 			projectDirPath = "";
 			projectRoot = "";
@@ -487,6 +495,25 @@
 			defaultConfigurationName = Release;
 		};
 /* End XCConfigurationList section */
+
+/* Begin XCRemoteSwiftPackageReference section */
+		B0C4DFC627456B1A00DAFDB8 /* XCRemoteSwiftPackageReference "CalendarKit" */ = {
+			isa = XCRemoteSwiftPackageReference;
+			repositoryURL = "https://github.com/richardtop/CalendarKit.git";
+			requirement = {
+				kind = upToNextMajorVersion;
+				minimumVersion = 1.0.14;
+			};
+		};
+/* End XCRemoteSwiftPackageReference section */
+
+/* Begin XCSwiftPackageProductDependency section */
+		B0C4DFC727456B1A00DAFDB8 /* CalendarKit */ = {
+			isa = XCSwiftPackageProductDependency;
+			package = B0C4DFC627456B1A00DAFDB8 /* XCRemoteSwiftPackageReference "CalendarKit" */;
+			productName = CalendarKit;
+		};
+/* End XCSwiftPackageProductDependency section */
 	};
 	rootObject = 23D5E0D02722C18A0025821C /* Project object */;
 }
