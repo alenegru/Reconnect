@@ -328,7 +328,7 @@ PODS:
     - BoringSSL-GRPC (= 0.0.7)
     - gRPC-Core/Interface (= 1.28.2)
   - gRPC-Core/Interface (1.28.2)
-  - GTMSessionFetcher/Core (1.5.0)
+  - GTMSessionFetcher/Core (1.7.0)
   - InputBarAccessoryView (4.3.3):
     - InputBarAccessoryView/Core (= 4.3.3)
   - InputBarAccessoryView/Core (4.3.3)
@@ -397,7 +397,7 @@ SPEC CHECKSUMS:
   GoogleUtilities: 7f2f5a07f888cdb145101d6042bc4422f57e70b3
   "gRPC-C++": 13d8ccef97d5c3c441b7e3c529ef28ebee86fad2
   gRPC-Core: 4afa11bfbedf7cdecd04de535a9e046893404ed5
-  GTMSessionFetcher: b3503b20a988c4e20cc189aa798fd18220133f52
+  GTMSessionFetcher: 43748f93435c2aa068b1cbe39655aaf600652e91
   InputBarAccessoryView: 8e7fc09e9cba75e0fee5da13450e15c194806f69
   JGProgressHUD: d83d7a981b85d11205e19ff8ad5bb9c40571c847
   leveldb-library: 50c7b45cbd7bf543c81a468fe557a16ae3db8729
@@ -408,4 +408,4 @@ SPEC CHECKSUMS:
 
 PODFILE CHECKSUM: 3321d1f5d535e51e16b0f98c4514da70a0ae2756
 
-COCOAPODS: 1.10.1
+COCOAPODS: 1.11.2

@@ -71,7 +71,7 @@
             </objects>
             <point key="canvasLocation" x="1047.8260869565217" y="91.741071428571431"/>
         </scene>
-        <!--Calendar View Controller-->
+        <!--Calendar-->
         <scene sceneID="0h9-5N-rWV">
             <objects>
                 <viewController id="2tn-s8-vF0" customClass="CalendarViewController" customModule="Reconnect" customModuleProvider="target" sceneMemberID="viewController">
@@ -79,9 +79,9 @@
                         <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <viewLayoutGuide key="safeArea" id="dGy-Iw-wJv"/>
-                        <color key="backgroundColor" systemColor="systemBackgroundColor"/>
+                        <color key="backgroundColor" systemColor="systemGray3Color"/>
                     </view>
-                    <navigationItem key="navigationItem" id="Rgo-iB-QjF"/>
+                    <navigationItem key="navigationItem" title="Calendar" id="Rgo-iB-QjF"/>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="oXx-Ez-d55" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
             </objects>
@@ -357,6 +357,9 @@
     <resources>
         <systemColor name="systemBackgroundColor">
             <color white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+        </systemColor>
+        <systemColor name="systemGray3Color">
+            <color red="0.7803921568627451" green="0.7803921568627451" blue="0.80000000000000004" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
         </systemColor>
     </resources>
 </document>
