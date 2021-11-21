@@ -11,7 +11,15 @@ import JGProgressHUD
 class NewConversationViewController: UIViewController {
     @IBOutlet weak var searchBar: UISearchBar!
     
+    public var completion: (([String: String]) -> ())?
+    
     private let spinner =  JGProgressHUD()
+    
+    private var users = [[String: String]]()
+    
+    private var results = [[String: String]]()
+    
+    private var hasFetched = false
     
     private let tableView: UITableView = {
         let table = UITableView()
@@ -60,7 +68,7 @@ extension NewConversationViewController: UISearchBarDelegate {
 
 extension NewConversationViewController: UITableViewDelegate, UITableViewDataSource {
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        return 1
+        return results.count
     }
     
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
@@ -69,5 +77,11 @@ extension NewConversationViewController: UITableViewDelegate, UITableViewDataSou
         return cell
     }
     
+    func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
+        let targetUserData = results[indexPath.row]
+        dismiss(animated: true) { [weak self] in
+            self?.completion?(targetUserData)
+        }
+    }
     
 }

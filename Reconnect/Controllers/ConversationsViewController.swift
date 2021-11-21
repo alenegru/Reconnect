@@ -62,8 +62,28 @@ class ConversationsViewController: UIViewController {
     private func fetchConversations() {
     }
     
+    // This function is called before the segue
+    override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
+
+        // Get a reference to the second view controller
+        if (segue.identifier == K.newChatSegue) {
+            let newConversationsViewController = segue.destination as! NewConversationViewController
+
+            // Set a variable in the second view controller with the String to pass
+            newConversationsViewController.completion = { [weak self] result in
+                print("\(result)")
+                self?.createNewConversation(result)
+            }
+        }
+    }
+
+    
     @IBAction func composeButtonPressed(_ sender: UIBarButtonItem) {
-        
+        self.performSegue(withIdentifier: K.newChatSegue, sender: self)
+    }
+    
+    private func createNewConversation(_ result: [String: String]) {
+        self.performSegue(withIdentifier: K.newChatSegue, sender: self)
     }
     
     

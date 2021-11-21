@@ -178,13 +178,13 @@
                         <barButtonItem key="rightBarButtonItem" systemItem="compose" id="sJR-nb-AmF">
                             <connections>
                                 <action selector="composeButtonPressed:" destination="FfS-Fo-Dp4" id="jNX-Jv-WKb"/>
-                                <segue destination="bAa-Oo-fjw" kind="presentation" identifier="searchSegue" id="Com-NW-lPN"/>
                             </connections>
                         </barButtonItem>
                     </navigationItem>
                     <connections>
                         <outlet property="conversationsView" destination="OLu-Tp-xxR" id="xNv-0s-wkI"/>
                         <segue destination="kpt-Te-7Oa" kind="show" identifier="chatSegue" id="vwu-Df-7y3"/>
+                        <segue destination="bAa-Oo-fjw" kind="presentation" identifier="newChatSegue" id="t3h-T0-L0k"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="hcp-GC-ohw" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>

@@ -15,6 +15,7 @@ struct K {
     static let loginSegue = "loginToChat"
     static let chatSegue = "chatSegue"
     static let searchSegue = "searchSegue"
+    static let newChatSegue = "newChatSegue"
      
     struct FStore {
         static let collectionName = "messages"
