@@ -334,6 +334,9 @@ PODS:
   - InputBarAccessoryView/Core (4.3.3)
   - JGProgressHUD (2.2)
   - leveldb-library (1.22.1)
+  - MessageInputBar (0.4.1):
+    - MessageInputBar/Core (= 0.4.1)
+  - MessageInputBar/Core (0.4.1)
   - MessageKit (3.1.1):
     - InputBarAccessoryView (~> 4.3.0)
   - nanopb (1.30906.0):
@@ -352,6 +355,7 @@ DEPENDENCIES:
   - Firebase/Database
   - Firebase/Firestore
   - JGProgressHUD
+  - MessageInputBar
   - MessageKit
   - SDWebImage
 
@@ -376,6 +380,7 @@ SPEC REPOS:
     - InputBarAccessoryView
     - JGProgressHUD
     - leveldb-library
+    - MessageInputBar
     - MessageKit
     - nanopb
     - PromisesObjC
@@ -401,11 +406,12 @@ SPEC CHECKSUMS:
   InputBarAccessoryView: 8e7fc09e9cba75e0fee5da13450e15c194806f69
   JGProgressHUD: d83d7a981b85d11205e19ff8ad5bb9c40571c847
   leveldb-library: 50c7b45cbd7bf543c81a468fe557a16ae3db8729
+  MessageInputBar: e81c7535347f1f7b923de7080409a535a004b6e4
   MessageKit: a3e612a54a24f5d9ca0295760749b481afd3f2da
   nanopb: 59317e09cf1f1a0af72f12af412d54edf52603fc
   PromisesObjC: 3113f7f76903778cf4a0586bd1ab89329a0b7b97
   SDWebImage: 4dc3e42d9ec0c1028b960a33ac6b637bb432207b
 
-PODFILE CHECKSUM: 3321d1f5d535e51e16b0f98c4514da70a0ae2756
+PODFILE CHECKSUM: eb9d6cd45f553c2bab8a9502112ce06ccae60af4
 
-COCOAPODS: 1.11.2
+COCOAPODS: 1.10.1

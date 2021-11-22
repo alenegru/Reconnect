@@ -71,7 +71,7 @@
             </objects>
             <point key="canvasLocation" x="1047.8260869565217" y="91.741071428571431"/>
         </scene>
-        <!--Calendar-->
+        <!--Calendar View Controller-->
         <scene sceneID="0h9-5N-rWV">
             <objects>
                 <viewController id="2tn-s8-vF0" customClass="CalendarViewController" customModule="Reconnect" customModuleProvider="target" sceneMemberID="viewController">
@@ -81,7 +81,7 @@
                         <viewLayoutGuide key="safeArea" id="dGy-Iw-wJv"/>
                         <color key="backgroundColor" systemColor="systemGray3Color"/>
                     </view>
-                    <navigationItem key="navigationItem" title="Calendar" id="Rgo-iB-QjF"/>
+                    <navigationItem key="navigationItem" largeTitleDisplayMode="never" id="Rgo-iB-QjF"/>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="oXx-Ez-d55" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
             </objects>
@@ -129,7 +129,7 @@
                                     <action selector="loginButtonPressed:" destination="gLO-Ms-sVQ" eventType="touchUpInside" id="DKw-TB-y7k"/>
                                 </connections>
                             </button>
-                            <textField opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="left" contentVerticalAlignment="center" text="aaaaaaa" borderStyle="roundedRect" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="V3j-Cs-dxc">
+                            <textField opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="left" contentVerticalAlignment="center" text="parola" borderStyle="roundedRect" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="V3j-Cs-dxc">
                                 <rect key="frame" x="111" y="468" width="191" height="34"/>
                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                 <fontDescription key="fontDescription" type="system" pointSize="14"/>
@@ -352,7 +352,7 @@
         </scene>
     </scenes>
     <inferredMetricsTieBreakers>
-        <segue reference="zWB-2t-X89"/>
+        <segue reference="ICr-AS-2sT"/>
     </inferredMetricsTieBreakers>
     <resources>
         <systemColor name="systemBackgroundColor">

@@ -8,6 +8,7 @@
 
 /* Begin PBXBuildFile section */
 		14FFC9A70ECDDDBF2D3C8B90 /* Pods_Reconnect.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 1D41BBC6569FF27F0CD181F7 /* Pods_Reconnect.framework */; };
+		230F58A1274B00A2003A1C61 /* Conversations.swift in Sources */ = {isa = PBXBuildFile; fileRef = 230F58A0274B00A2003A1C61 /* Conversations.swift */; };
 		23830077272DA86300402D75 /* GoogleService-Info.plist in Resources */ = {isa = PBXBuildFile; fileRef = 23830076272DA86300402D75 /* GoogleService-Info.plist */; };
 		2383007D272DA9D400402D75 /* Message.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2383007C272DA9D400402D75 /* Message.swift */; };
 		2394B6FC272F41F9003FCFFE /* Constants.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2394B6FB272F41F8003FCFFE /* Constants.swift */; };
@@ -30,6 +31,7 @@
 
 /* Begin PBXFileReference section */
 		1D41BBC6569FF27F0CD181F7 /* Pods_Reconnect.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_Reconnect.framework; sourceTree = BUILT_PRODUCTS_DIR; };
+		230F58A0274B00A2003A1C61 /* Conversations.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Conversations.swift; sourceTree = "<group>"; };
 		23830076272DA86300402D75 /* GoogleService-Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = "GoogleService-Info.plist"; sourceTree = "<group>"; };
 		2383007C272DA9D400402D75 /* Message.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Message.swift; sourceTree = "<group>"; };
 		2394B6FB272F41F8003FCFFE /* Constants.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Constants.swift; sourceTree = "<group>"; };
@@ -79,6 +81,7 @@
 			children = (
 				2383007C272DA9D400402D75 /* Message.swift */,
 				2394B73927388CE8003FCFFE /* Sender.swift */,
+				230F58A0274B00A2003A1C61 /* Conversations.swift */,
 			);
 			path = Models;
 			sourceTree = "<group>";
@@ -281,6 +284,7 @@
 			files = (
 				23D088752726AD4000F208EB /* LoginViewController.swift in Sources */,
 				23D088782726AD4E00F208EB /* RegisterViewController.swift in Sources */,
+				230F58A1274B00A2003A1C61 /* Conversations.swift in Sources */,
 				23D0887E2726AE8B00F208EB /* ConversationsViewController.swift in Sources */,
 				23D5E0E02722C18B0025821C /* ViewController.swift in Sources */,
 				23D5E0DC2722C18B0025821C /* AppDelegate.swift in Sources */,

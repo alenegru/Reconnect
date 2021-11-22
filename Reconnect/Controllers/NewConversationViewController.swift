@@ -13,7 +13,7 @@ class NewConversationViewController: UIViewController {
     
     public var completion: (([String: String]) -> ())?
     
-    private let spinner =  JGProgressHUD()
+    private let spinner =  JGProgressHUD(style: .dark)
     
     private var users = [[String: String]]()
     
@@ -62,7 +62,63 @@ class NewConversationViewController: UIViewController {
 
 extension NewConversationViewController: UISearchBarDelegate {
     func searchBarSearchButtonClicked(_ searchBar: UISearchBar) {
+        guard let text = searchBar.text, !text.replacingOccurrences(of: " ", with: "").isEmpty else {
+            return
+        }
+        results.removeAll()
+        spinner.show(in: view)
         
+        print(text)
+        self.searchUsers(query: text)
+        
+    }
+    
+    func searchUsers(query: String) {
+        if hasFetched {
+            filterUsers(with: query)
+        } else {
+            DatabaseManager.shared.getAllUsers(completion: { [weak self] result in
+                switch result {
+                case .success(let usersCollection):
+                    self?.hasFetched = true
+                    self?.users = usersCollection
+                    print(usersCollection)
+                    self?.filterUsers(with: query)
+                case .failure(let error):
+                    print("Failed to get users: \(error)")
+                }
+            })
+        }
+    }
+    
+    func filterUsers(with term: String) {
+        guard hasFetched else {
+            return
+        }
+        
+        self.spinner.dismiss()
+        
+        let results: [[String: String]] = self.users.filter({
+            guard let username = $0["username"]?.lowercased() else {
+                return false
+            }
+            
+            return username.hasPrefix(term.lowercased())
+        })
+        
+        self.results = results
+        updateUI()
+    }
+    
+    func updateUI() {
+        if results.isEmpty {
+            self.noResultsLabel.isHidden = false
+            self.tableView.isHidden = true
+        } else {
+            self.noResultsLabel.isHidden = true
+            self.tableView.isHidden = false
+            self.tableView.reloadData()
+        }
     }
 }
 
@@ -73,7 +129,8 @@ extension NewConversationViewController: UITableViewDelegate, UITableViewDataSou
     
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         let cell = tableView.dequeueReusableCell(withIdentifier: "usersCell", for: indexPath)
-        cell.textLabel?.text = "User"
+        print(results[indexPath.row]["username"] ?? "caca")
+        cell.textLabel?.text = results[indexPath.row]["username"]
         return cell
     }
     

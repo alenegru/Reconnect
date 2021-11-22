@@ -42,6 +42,7 @@ class RegisterViewController: UIViewController {
         FirebaseAuth.Auth.auth().createUser(withEmail: email, password: password, completion: { authResult, error in
             guard authResult != nil, error == nil else {
                 self.alertUserRegisterError(message: "User with this email already exists.")
+                self.spinner.dismiss()
                 return
             }
             
@@ -52,7 +53,13 @@ class RegisterViewController: UIViewController {
             UserDefaults.standard.setValue(email, forKey: "email")
             UserDefaults.standard.setValue(username, forKey: "username")
             
-            DatabaseManager.shared.insertUser(with: User(username: username, email: email))
+            let chatUser = User(username: username,
+                                email: email)
+            DatabaseManager.shared.insertUser(with: chatUser, completion: { success in
+                if success {
+                    print("success")
+                }
+            })
             
             self.performSegue(withIdentifier: K.registerSegue, sender: self)
         })

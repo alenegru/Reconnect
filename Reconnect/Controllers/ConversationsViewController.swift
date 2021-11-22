@@ -15,6 +15,8 @@ class ConversationsViewController: UIViewController {
     
     private let spinner = JGProgressHUD(style: .dark)
     
+    private var result: [String: String] = [:]
+    
     let db = Firestore.firestore()
     
     private let noConversationsLabel: UILabel = {
@@ -71,9 +73,17 @@ class ConversationsViewController: UIViewController {
 
             // Set a variable in the second view controller with the String to pass
             newConversationsViewController.completion = { [weak self] result in
-                print("\(result)")
-                self?.createNewConversation(result)
+                self?.result = result
+                self?.createNewConversation()
             }
+        } else if (segue.identifier == K.chatSegue) {
+            let chatViewController = segue.destination as! ChatViewController
+            guard let username = result["username"], let email = result["email"] else {
+                return
+            }
+            chatViewController.title = username
+            chatViewController.otherUserEmail = email
+            chatViewController.isNewConversation = true
         }
     }
 
@@ -82,8 +92,8 @@ class ConversationsViewController: UIViewController {
         self.performSegue(withIdentifier: K.newChatSegue, sender: self)
     }
     
-    private func createNewConversation(_ result: [String: String]) {
-        self.performSegue(withIdentifier: K.newChatSegue, sender: self)
+    private func createNewConversation() {
+        self.performSegue(withIdentifier: K.chatSegue, sender: self)
     }
     
     

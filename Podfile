@@ -13,5 +13,6 @@ pod 'Firebase/Analytics'
 pod 'MessageKit'
 pod 'JGProgressHUD'
 pod 'SDWebImage'
+pod 'MessageInputBar'
 
 end
