@@ -57,6 +57,14 @@
                                     <segue destination="2tn-s8-vF0" kind="show" id="pns-Oh-6hf"/>
                                 </connections>
                             </button>
+                            <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="uyv-4e-JOe">
+                                <rect key="frame" x="140" y="773" width="135" height="30"/>
+                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                <state key="normal" title="Go to user calendar"/>
+                                <connections>
+                                    <segue destination="RZj-3N-cMs" kind="show" id="wIb-6g-eda"/>
+                                </connections>
+                            </button>
                         </subviews>
                         <viewLayoutGuide key="safeArea" id="6Tk-OE-BBY"/>
                         <color key="backgroundColor" systemColor="systemBackgroundColor"/>
@@ -70,6 +78,22 @@
                 <placeholder placeholderIdentifier="IBFirstResponder" id="dkx-z0-nzr" sceneMemberID="firstResponder"/>
             </objects>
             <point key="canvasLocation" x="1047.8260869565217" y="91.741071428571431"/>
+        </scene>
+        <!--View Controller-->
+        <scene sceneID="yZI-Ad-Bie">
+            <objects>
+                <viewController id="RZj-3N-cMs" sceneMemberID="viewController">
+                    <view key="view" contentMode="scaleToFill" id="1A8-wL-Ygs">
+                        <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <viewLayoutGuide key="safeArea" id="O34-E9-Y8D"/>
+                        <color key="backgroundColor" systemColor="systemBackgroundColor"/>
+                    </view>
+                    <navigationItem key="navigationItem" id="ZQg-Th-jcg"/>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="9Hg-FK-sKX" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="-64" y="860"/>
         </scene>
         <!--Calendar View Controller-->
         <scene sceneID="0h9-5N-rWV">

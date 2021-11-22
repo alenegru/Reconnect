@@ -5,6 +5,7 @@ import EventKit
 import EventKitUI
 
 final class CalendarViewController: DayViewController, EKEventEditViewDelegate {
+    private var events: [Event] = []
     private var eventStore = EKEventStore()
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -13,6 +14,8 @@ final class CalendarViewController: DayViewController, EKEventEditViewDelegate {
         requestAccessToCalendar()
         // Subscribe to notifications to reload the UI when
         subscribeToNotifications()
+        
+        events.append(Event(startDate: "1", endDate: "2"))
     }
     
     private func requestAccessToCalendar() {
