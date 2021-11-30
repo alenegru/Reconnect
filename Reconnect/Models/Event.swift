@@ -8,6 +8,6 @@
 import Foundation
 
 struct Event {
-    startDate: String
-    endDate: String
+    var startDate: String
+    var endDate: String
 }
