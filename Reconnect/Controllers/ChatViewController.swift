@@ -59,7 +59,7 @@ extension ChatViewController: InputBarAccessoryViewDelegate {
                                   messageId: messageId,
                                   sentDate: Date(),
                                   kind: .text(text))
-            DatabaseManager.shared.createNewConversation(with: otherUserEmail, username: self.title ?? "User", firstMessage: message, completion: { [weak self] success in
+            DatabaseManager.shared.createNewConversation(with: otherUserEmail, otherUserName: self.title ?? "User", firstMessage: message, completion: { [weak self] success in
                 if success {
                     print("message sent")
                 } else {

@@ -11,6 +11,8 @@
 		230F58A1274B00A2003A1C61 /* Conversations.swift in Sources */ = {isa = PBXBuildFile; fileRef = 230F58A0274B00A2003A1C61 /* Conversations.swift */; };
 		23830077272DA86300402D75 /* GoogleService-Info.plist in Resources */ = {isa = PBXBuildFile; fileRef = 23830076272DA86300402D75 /* GoogleService-Info.plist */; };
 		2383007D272DA9D400402D75 /* Message.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2383007C272DA9D400402D75 /* Message.swift */; };
+		2385E73E275BD96D00C596ED /* ConversationTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2385E73C275BD96D00C596ED /* ConversationTableViewCell.swift */; };
+		2385E73F275BD96D00C596ED /* ConversationTableViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 2385E73D275BD96D00C596ED /* ConversationTableViewCell.xib */; };
 		2394B6FC272F41F9003FCFFE /* Constants.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2394B6FB272F41F8003FCFFE /* Constants.swift */; };
 		2394B70327382067003FCFFE /* DatabaseManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2394B70227382067003FCFFE /* DatabaseManager.swift */; };
 		2394B73727387427003FCFFE /* ChatViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2394B73627387427003FCFFE /* ChatViewController.swift */; };
@@ -37,6 +39,8 @@
 		230F58A0274B00A2003A1C61 /* Conversations.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Conversations.swift; sourceTree = "<group>"; };
 		23830076272DA86300402D75 /* GoogleService-Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = "GoogleService-Info.plist"; sourceTree = "<group>"; };
 		2383007C272DA9D400402D75 /* Message.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Message.swift; sourceTree = "<group>"; };
+		2385E73C275BD96D00C596ED /* ConversationTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ConversationTableViewCell.swift; sourceTree = "<group>"; };
+		2385E73D275BD96D00C596ED /* ConversationTableViewCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = ConversationTableViewCell.xib; sourceTree = "<group>"; };
 		2394B6FB272F41F8003FCFFE /* Constants.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Constants.swift; sourceTree = "<group>"; };
 		2394B70227382067003FCFFE /* DatabaseManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DatabaseManager.swift; sourceTree = "<group>"; };
 		2394B73627387427003FCFFE /* ChatViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ChatViewController.swift; sourceTree = "<group>"; };
@@ -96,6 +100,8 @@
 			isa = PBXGroup;
 			children = (
 				23D5E0E12722C18B0025821C /* Main.storyboard */,
+				2385E73C275BD96D00C596ED /* ConversationTableViewCell.swift */,
+				2385E73D275BD96D00C596ED /* ConversationTableViewCell.xib */,
 			);
 			path = Views;
 			sourceTree = "<group>";
@@ -235,6 +241,7 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				2385E73F275BD96D00C596ED /* ConversationTableViewCell.xib in Resources */,
 				23D5E0E82722C18D0025821C /* LaunchScreen.storyboard in Resources */,
 				23D5E0E52722C18D0025821C /* Assets.xcassets in Resources */,
 				23D5E0E32722C18B0025821C /* Main.storyboard in Resources */,
@@ -304,6 +311,7 @@
 				23D5E0DE2722C18B0025821C /* SceneDelegate.swift in Sources */,
 				2394B74027399C77003FCFFE /* CalendarViewController.swift in Sources */,
 				2383007D272DA9D400402D75 /* Message.swift in Sources */,
+				2385E73E275BD96D00C596ED /* ConversationTableViewCell.swift in Sources */,
 				2394B6FC272F41F9003FCFFE /* Constants.swift in Sources */,
 				2394B73727387427003FCFFE /* ChatViewController.swift in Sources */,
 				2394B70327382067003FCFFE /* DatabaseManager.swift in Sources */,
