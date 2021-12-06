@@ -14,8 +14,7 @@ final class CalendarViewController: DayViewController, EKEventEditViewDelegate {
         requestAccessToCalendar()
         // Subscribe to notifications to reload the UI when
         subscribeToNotifications()
-        
-        events.append(Event(startDate: "1", endDate: "2"))
+    
     }
     
     private func requestAccessToCalendar() {
@@ -107,6 +106,8 @@ final class CalendarViewController: DayViewController, EKEventEditViewDelegate {
         newEKEvent.startDate = date
         newEKEvent.endDate = endDate
         newEKEvent.title = "New event"
+       // let color = UIColor(ciColor: .red)
+       // newEKEvent.calendar.cgColor = color.cgColor
 
         let newEKWrapper = EKWrapper(eventKitEvent: newEKEvent)
         newEKWrapper.editedEvent = newEKWrapper

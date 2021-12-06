@@ -79,21 +79,42 @@
             </objects>
             <point key="canvasLocation" x="1047.8260869565217" y="91.741071428571431"/>
         </scene>
-        <!--View Controller-->
+        <!--User Calendar View Controller-->
         <scene sceneID="yZI-Ad-Bie">
             <objects>
-                <viewController id="RZj-3N-cMs" sceneMemberID="viewController">
+                <viewController id="RZj-3N-cMs" customClass="UserCalendarViewController" customModule="Reconnect" customModuleProvider="target" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="1A8-wL-Ygs">
                         <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <viewLayoutGuide key="safeArea" id="O34-E9-Y8D"/>
                         <color key="backgroundColor" systemColor="systemBackgroundColor"/>
                     </view>
-                    <navigationItem key="navigationItem" id="ZQg-Th-jcg"/>
+                    <navigationItem key="navigationItem" largeTitleDisplayMode="never" id="ZQg-Th-jcg">
+                        <barButtonItem key="rightBarButtonItem" title="See weather" image="cloud.rain.fill" catalog="system" id="4Xp-kB-NWd">
+                            <connections>
+                                <segue destination="7zO-i5-tJc" kind="presentation" id="SZb-bE-LKS"/>
+                            </connections>
+                        </barButtonItem>
+                    </navigationItem>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="9Hg-FK-sKX" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
             </objects>
             <point key="canvasLocation" x="-64" y="860"/>
+        </scene>
+        <!--Weather View Controller-->
+        <scene sceneID="yFL-NM-sU4">
+            <objects>
+                <viewController id="7zO-i5-tJc" customClass="WeatherViewController" customModule="Reconnect" customModuleProvider="target" sceneMemberID="viewController">
+                    <view key="view" contentMode="scaleToFill" id="rOP-jQ-S8C">
+                        <rect key="frame" x="0.0" y="0.0" width="414" height="842"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <viewLayoutGuide key="safeArea" id="IyV-br-BV9"/>
+                        <color key="backgroundColor" systemColor="systemBackgroundColor"/>
+                    </view>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="v6a-Uj-XU0" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="359" y="1592"/>
         </scene>
         <!--Calendar View Controller-->
         <scene sceneID="0h9-5N-rWV">
@@ -105,7 +126,13 @@
                         <viewLayoutGuide key="safeArea" id="dGy-Iw-wJv"/>
                         <color key="backgroundColor" systemColor="systemGray3Color"/>
                     </view>
-                    <navigationItem key="navigationItem" largeTitleDisplayMode="never" id="Rgo-iB-QjF"/>
+                    <navigationItem key="navigationItem" largeTitleDisplayMode="never" id="Rgo-iB-QjF">
+                        <barButtonItem key="rightBarButtonItem" title="Item" image="sun.max.fill" catalog="system" id="hEc-Dr-4Ni">
+                            <connections>
+                                <segue destination="7zO-i5-tJc" kind="presentation" id="zyT-A2-J88"/>
+                            </connections>
+                        </barButtonItem>
+                    </navigationItem>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="oXx-Ez-d55" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
             </objects>
@@ -376,9 +403,12 @@
         </scene>
     </scenes>
     <inferredMetricsTieBreakers>
-        <segue reference="ICr-AS-2sT"/>
+        <segue reference="zWB-2t-X89"/>
+        <segue reference="zyT-A2-J88"/>
     </inferredMetricsTieBreakers>
     <resources>
+        <image name="cloud.rain.fill" catalog="system" width="128" height="125"/>
+        <image name="sun.max.fill" catalog="system" width="128" height="124"/>
         <systemColor name="systemBackgroundColor">
             <color white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
         </systemColor>

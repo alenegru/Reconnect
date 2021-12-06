@@ -289,3 +289,14 @@ struct User {
         return safeEmail
     }
 }
+
+struct UserEvent {
+    let username: String
+    let startDate: String
+    let endDate: String
+    let isAllDay: Bool
+    let text: String
+    let color: String
+
+}
+
