@@ -15,6 +15,8 @@ class ConversationsViewController: UIViewController {
     
     private let spinner = JGProgressHUD(style: .dark)
     
+    private var conversations = [Conversation]()
+    
     private var result: [String: String] = [:]
     
     let db = Firestore.firestore()
@@ -36,10 +38,11 @@ class ConversationsViewController: UIViewController {
         
         validateAuth()
         //conversationsView.isHidden = true
-        conversationsView.register(UITableViewCell.self, forCellReuseIdentifier: "cell")
+        conversationsView.register(UINib(nibName: K.conversationCellNibname, bundle: nil), forCellReuseIdentifier: K.conversationCellIdentifier)
         conversationsView.delegate = self
         conversationsView.dataSource = self
         fetchConversations()
+        startListeningForConversations()
         //DatabaseManager.shared.test()
         
     }
@@ -62,6 +65,31 @@ class ConversationsViewController: UIViewController {
     }
     
     private func fetchConversations() {
+    }
+    
+    private func startListeningForConversations() {
+        guard let email = UserDefaults.standard.value(forKey: "email") as? String else {
+            return
+        }
+        
+        let safeEmail = DatabaseManager.safeEmail(emailAddress: email)
+        print(safeEmail)
+        DatabaseManager.shared.getAllConversations(for: safeEmail, completion: {[weak self] result in
+            switch result {
+            case .success(let conversations):
+                guard !conversations.isEmpty else {
+                    print("no convos")
+                    return
+                }
+                print("got conversation")
+                self?.conversations = conversations
+                DispatchQueue.main.async {
+                    self?.conversationsView.reloadData()
+                }
+            case .failure(let error):
+                print("failed to get convos: \(error)")
+            }
+        })
     }
     
     // This function is called before the segue
@@ -103,13 +131,17 @@ extension ConversationsViewController: UITableViewDataSource, UITableViewDelegat
     
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
         // #warning Incomplete implementation, return the number of rows
-        return 1
+        return conversations.count
     }
     
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
-        let cell = tableView.dequeueReusableCell(withIdentifier: "cell", for: indexPath)
-        cell.textLabel?.text = "Convo"
-        cell.accessoryType = .disclosureIndicator
+        let model = conversations[indexPath.row]
+        print("Id: \(model.id)")
+        print("latest message text: \(model.latestMessage.text)")
+        print(conversations.count)
+        let cell = tableView.dequeueReusableCell(withIdentifier: K.conversationCellIdentifier, for: indexPath) as! ConversationTableViewCell
+        cell.userTextLabel.text = model.latestMessage.text
+        cell.usernameLabel.text = model.name
         return cell
     }
     
@@ -118,8 +150,8 @@ extension ConversationsViewController: UITableViewDataSource, UITableViewDelegat
         self.performSegue(withIdentifier: K.chatSegue, sender: self)
     }
     
-    func numberOfSections(in tableView: UITableView) -> Int {
-        return 1
+    func tableView(_ tableView: UITableView, heightForRowAt indexPath: IndexPath) -> CGFloat {
+        return 70
     }
 
 }
