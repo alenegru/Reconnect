@@ -16,6 +16,13 @@ final class CalendarViewController: DayViewController, EKEventEditViewDelegate {
         subscribeToNotifications()
     
     }
+    public static let dateFormatter: DateFormatter = {
+            let formatter = DateFormatter()
+            formatter.dateStyle = .medium
+            formatter.timeStyle = .long
+            formatter.locale = .current
+            return formatter
+        }()
     
     private func requestAccessToCalendar() {
         // Request access to the events
@@ -26,8 +33,53 @@ final class CalendarViewController: DayViewController, EKEventEditViewDelegate {
                 self.initializeStore()
                 self.subscribeToNotifications()
                 self.reloadData()
+                
+                DatabaseManager.shared.insertEvents(events: self.ekEventsToUserEvents(), completion: { [weak self] success in
+                                                                                                if success {
+                                                                                                    print("events inserted")
+                                                                                                } else {
+                                                                                                    print("failed to insert events")
+                                                                                                }
+                    
+                })
             }
         }
+    }
+    
+    private func ekEventsToUserEvents() -> [UserEvent]{
+        // The `date` always has it's Time components set to 00:00:00 of the day requested
+        let startDate = Date()
+        
+        let formatter = DateFormatter()
+        formatter.timeStyle = .medium
+        formatter.dateStyle = .long
+        print(formatter.string(from: startDate))
+        
+        var oneMonthComponents = DateComponents()
+        oneMonthComponents.day = 30
+        let endDate = calendar.date(byAdding: oneMonthComponents, to: startDate)!
+        
+        let predicate = eventStore.predicateForEvents(withStart: startDate, // Start of the current day
+                                                      end: endDate, // Start of the next day
+                                                      calendars: nil) // Search in all calendars
+        
+        let eventKitEvents = eventStore.events(matching: predicate) // All events happening on a given day
+        let calendarKitEvents = eventKitEvents.map(EKWrapper.init)
+        
+        var userEvents: [UserEvent] = []
+        
+        for ekEvent in calendarKitEvents{
+            let newUserEvent = UserEvent(startDate: CalendarViewController.dateFormatter.string(from: ekEvent.startDate),
+                                         endDate: CalendarViewController.dateFormatter.string(from: ekEvent.endDate),
+                                         isAllDay: ekEvent.isAllDay,
+                                         text: ekEvent.text,
+                                         color: ekEvent.color.accessibilityName
+                                        )
+            userEvents.append(newUserEvent)
+            
+        }
+        
+        return userEvents
     }
     
     private func subscribeToNotifications() {
@@ -62,6 +114,15 @@ final class CalendarViewController: DayViewController, EKEventEditViewDelegate {
         
         let eventKitEvents = eventStore.events(matching: predicate) // All events happening on a given day
         let calendarKitEvents = eventKitEvents.map(EKWrapper.init)
+        
+        DatabaseManager.shared.insertEvents(events: self.ekEventsToUserEvents(), completion: { [weak self] success in
+                                                                                        if success {
+                                                                                            print("events inserted")
+                                                                                        } else {
+                                                                                            print("failed to insert events")
+                                                                                        }
+            
+        })
         
         return calendarKitEvents
     }

@@ -101,7 +101,6 @@ extension DatabaseManager {
             }
         }
     }
-
 }
 
 //MARK: - Sending messages
@@ -309,6 +308,56 @@ extension DatabaseManager {
     }
 }
 
+extension DatabaseManager{
+    public func insertEvents(events:[UserEvent], completion: @escaping (Bool) -> Void){
+        guard let currentEmail = UserDefaults.standard.value(forKey: "email") as? String,
+                        let currentUsername = UserDefaults.standard.value(forKey: "username") as? String else {
+                            return
+                    }
+        let safeEmail = DatabaseManager.safeEmail(emailAddress: currentEmail)
+        let ref = database.child("a-b-com")
+        ref.observeSingleEvent(of: .value, with: { [weak self] snapshot in
+                        guard var userNode = snapshot.value as? [String: Any] else {
+                            completion(false)
+                            print("user not found")
+                            return
+                        }
+        
+            for event in events{
+                print(event.text)
+                let newEventData: [String: Any] = [
+                    "startDate": event.startDate,
+                    "endDate": event.endDate,
+                    "text": event.text,
+                    "color": event.color,
+                    "isAllDay": event.isAllDay
+                ]
+                
+                if var userEvents = userNode["events"] as? [[String: Any]] {
+                                    // conversation array exists for current user
+                                    // you should append
+                    userEvents.append(newEventData)
+                                    userNode["events"] = userEvents
+                                    ref.setValue(userNode, withCompletionBlock: { [weak self] error, _ in
+                                        guard error == nil else {
+                                            completion(false)
+                                            return
+                                        }
+                                    })
+                                }
+                                else {
+                                    // conversation array does NOT exist
+                                    // create it
+                                    userNode["events"] = [
+                                        newEventData
+                                    ]
+                }
+
+            }
+        } )
+    }
+}
+
 struct User {
     let username: String
     let email: String
@@ -319,13 +368,5 @@ struct User {
     }
 }
 
-struct UserEvent {
-    let username: String
-    let startDate: String
-    let endDate: String
-    let isAllDay: Bool
-    let text: String
-    let color: String
 
-}
 
