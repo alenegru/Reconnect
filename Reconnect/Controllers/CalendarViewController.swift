@@ -58,6 +58,7 @@ final class CalendarViewController: DayViewController, EKEventEditViewDelegate {
         var oneMonthComponents = DateComponents()
         oneMonthComponents.day = 30
         let endDate = calendar.date(byAdding: oneMonthComponents, to: startDate)!
+        print(formatter.string(from: endDate))
         
         let predicate = eventStore.predicateForEvents(withStart: startDate, // Start of the current day
                                                       end: endDate, // Start of the next day

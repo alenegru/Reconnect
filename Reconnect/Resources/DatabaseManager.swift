@@ -310,11 +310,11 @@ extension DatabaseManager {
 
 extension DatabaseManager{
     public func insertEvents(events:[UserEvent], completion: @escaping (Bool) -> Void){
-        guard let currentEmail = UserDefaults.standard.value(forKey: "email") as? String,
-                        let currentUsername = UserDefaults.standard.value(forKey: "username") as? String else {
-                            return
-                    }
-        let safeEmail = DatabaseManager.safeEmail(emailAddress: currentEmail)
+//        guard let currentEmail = UserDefaults.standard.value(forKey: "email") as? String,
+//                        let currentUsername = UserDefaults.standard.value(forKey: "username") as? String else {
+//                            return
+//                    }
+//        let safeEmail = DatabaseManager.safeEmail(emailAddress: currentEmail)
         let ref = database.child("a-b-com")
         ref.observeSingleEvent(of: .value, with: { [weak self] snapshot in
                         guard var userNode = snapshot.value as? [String: Any] else {
@@ -322,8 +322,10 @@ extension DatabaseManager{
                             print("user not found")
                             return
                         }
+            //ref.child("events").observeSingleEvent(of: , with: )
+            print(events.count)
         
-            for event in events{
+            for event in events {
                 print(event.text)
                 let newEventData: [String: Any] = [
                     "startDate": event.startDate,
@@ -354,7 +356,7 @@ extension DatabaseManager{
                 }
 
             }
-        } )
+        })
     }
 }
 
