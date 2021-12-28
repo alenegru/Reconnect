@@ -12,31 +12,11 @@ import EventKitUI
 import FirebaseFirestore
 
 class UserCalendarViewController: DayViewController {
-    //private var events: [Eventt] = []
+    private var events: [UserEvent] = []
     override func viewDidLoad() {
         super.viewDidLoad()
         title = "UserCalendar"
         navigationController?.navigationBar.prefersLargeTitles = true
-        navigationItem.title = "user"
-        //"\(evFirebase.username)'s username"
-    
-   // let db = Firestore.firestore()
-    
-    
-    /*let event = Eventt(startDate: "2016/10/08 22:31",
-                      endDate: "2016/10/08 22:31",
-                     isAllDay: false,
-                     text: "dentist")
-    
-
-    do {
-        try db.collection("UserCalendar").document("event").setData(from: event)
-    
-    } catch let error {
-        print("Error writing event to Firestore: \(error)")
-    }
-    }*/
-    
-    
+        navigationItem.title = "UserCalendar"
     }
 }
