@@ -89,7 +89,7 @@ extension DatabaseManager {
 
                 completion(.success(value))
             })
-        }
+    }
     
     public enum DatabaseError: Error {
         case failedToFetch
