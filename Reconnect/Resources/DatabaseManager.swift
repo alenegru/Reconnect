@@ -1,4 +1,4 @@
-//
+///
 //  DatabaseManager.swift
 //  Reconnect
 //
@@ -322,11 +322,18 @@ extension DatabaseManager{
                             print("user not found")
                             return
                         }
-            //ref.child("events").observeSingleEvent(of: , with: )
-            print(events.count)
-        
+            //delete everithing from events if existing
+            userNode.removeValue(forKey: "events")
+//            ref.child("events").observeSingleEvent(of: .value, with: { [weak self] snapshot in
+//                guard var eventNode = snapshot.value as? [String: Any]
+//                else {
+//                    completion(false)
+//                    print("events not found for this user")
+//                    return
+//                }
+          
             for event in events {
-                print(event.text)
+                
                 let newEventData: [String: Any] = [
                     "startDate": event.startDate,
                     "endDate": event.endDate,
@@ -357,6 +364,35 @@ extension DatabaseManager{
 
             }
         })
+    }
+    
+    public func getAllEvents(for email: String, completion: @escaping (Result<[UserEvent], Error>) -> Void) {
+        //database.child("a-b-com/events").observe(.value)
+        database.child("\(email)/events").observe(.value) {
+            (snapshot) in
+            guard let value = snapshot.value as? [[String: Any]] else {
+                completion(.failure(DatabaseError.failedToFetch))
+                return
+            }
+            let events: [UserEvent] = value.compactMap ({ dictionary in
+                guard let startDate_ = dictionary["startDate"] as? String,
+                      let endDate_ = dictionary["endDate"] as? String,
+                      let text_ = dictionary["text"] as? String,
+                      let color_ = dictionary["color"] as? String,
+                      let isAllDay_ = dictionary["isAllDay"] as? Bool
+                else {
+                    return nil
+                }
+                
+                return UserEvent(startDate:startDate_,
+                                 endDate: endDate_,
+                                 isAllDay: isAllDay_,
+                                 text: text_,
+                                 color: color_)
+            })
+            
+            completion(.success(events))
+        }
     }
 }
 
