@@ -16,6 +16,8 @@ struct K {
     static let chatSegue = "chatSegue"
     static let searchSegue = "searchSegue"
     static let newChatSegue = "newChatSegue"
+    static let conversationsSegue = "conversationsSegue"
+    static let calendarSegue = "calendarSegue"
     
     static let conversationCellIdentifier = "conversationTableViewCell"
     static let conversationCellNibname = "ConversationTableViewCell"

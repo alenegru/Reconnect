@@ -13,6 +13,7 @@ class ChatViewController: MessagesViewController {
     private var messages = [Message]()
     public var isNewConversation = false
     public var otherUserEmail: String = ""
+    public var conversationId: String = ""
     
     public static let dateFormatter: DateFormatter = {
         let formatter = DateFormatter()
@@ -26,8 +27,9 @@ class ChatViewController: MessagesViewController {
         guard let email = UserDefaults.standard.value(forKey: "email") as? String else {
             return nil
         }
-        return Sender(senderId: email,
-               displayName: "Laura Goron")
+        let safeEmail = DatabaseManager.safeEmail(emailAddress: email)
+        return Sender(senderId: safeEmail,
+               displayName: "Me")
     }
 
     override func viewDidLoad() {
@@ -42,6 +44,42 @@ class ChatViewController: MessagesViewController {
     override func viewDidAppear(_ animated: Bool) {
         super.viewDidAppear(animated)
         messageInputBar.inputTextView.becomeFirstResponder()
+        listenForMessages(shouldScrollToBottom: true)
+    }
+    
+    override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
+        if (segue.identifier == K.calendarSegue) {
+            // Get a reference to the second view controller
+            let userCalendarViewController = segue.destination as! DailyViewController
+
+            // Set a variable in the second view controller with the String to pass
+            print("OTHER USER EMAIL")
+            print(otherUserEmail)
+            userCalendarViewController.currentUser = DatabaseManager.safeEmail(emailAddress: otherUserEmail)
+        }
+    }
+    
+    
+    
+    private func listenForMessages(shouldScrollToBottom: Bool) {
+        DatabaseManager.shared.getAllMessagesForConversation(with: conversationId, completion: { [weak self] result in
+            switch result {
+            case .success(let messages):
+                guard !messages.isEmpty else {
+                    return
+                }
+                self?.messages = messages
+                
+                DispatchQueue.main.async {
+                    self?.messagesCollectionView.reloadDataAndKeepOffset()
+                    if shouldScrollToBottom {
+                        self?.messagesCollectionView.scrollToBottom()
+                    }
+                }
+            case .failure(let error):
+                print("failed to get messages: \(error)")
+            }
+        })
     }
 
 }
@@ -54,20 +92,34 @@ extension ChatViewController: InputBarAccessoryViewDelegate {
             return
         }
         
+        let message = Message(sender: sender,
+                              messageId: messageId,
+                              sentDate: Date(),
+                              kind: .text(text))
+        
         if isNewConversation {
-            let message = Message(sender: sender,
-                                  messageId: messageId,
-                                  sentDate: Date(),
-                                  kind: .text(text))
             DatabaseManager.shared.createNewConversation(with: otherUserEmail, otherUserName: self.title ?? "User", firstMessage: message, completion: { [weak self] success in
                 if success {
                     print("message sent")
+                    self?.isNewConversation = false
                 } else {
                     print("failed to send")
                 }
             })
         } else {
             
+            guard let name = self.title else {
+                return
+            }
+            DatabaseManager.shared.sendMessage(to: self.conversationId, otherUserEmail: otherUserEmail, name: name, newMessage: message, completion: { success in
+                if success {
+                    self.messageInputBar.inputTextView.text = nil
+                    print("message sent")
+                } else {
+                    print("failed to send")
+                }
+                
+            })
         }
     }
     
@@ -96,7 +148,6 @@ extension ChatViewController: MessagesDataSource, MessagesLayoutDelegate, Messag
             return sender
         }
         fatalError("Sender is nil")
-        return Sender(senderId: "", displayName: "")
     }
     
     func messageForItem(at indexPath: IndexPath, in messagesCollectionView: MessagesCollectionView) -> MessageType {

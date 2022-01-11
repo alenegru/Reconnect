@@ -47,7 +47,23 @@ class LoginViewController: UIViewController {
             }
 
             let user = result.user
-                UserDefaults.standard.setValue(email, forKey: "email")
+            
+            let safeEmail = DatabaseManager.safeEmail(emailAddress: email)
+            DatabaseManager.shared.getDataFor(path: safeEmail) { result in
+                switch result {
+                case .success(let data):
+                    guard let userData = data as? [String:Any],
+                        let username = userData["username"] as? String else {
+                        return
+                    }
+                    print("Username: \(username)")
+                    UserDefaults.standard.setValue(username, forKey: "username")
+                case .failure(let error):
+                    print("Failed to read data with error \(error)")
+                }
+            }
+            
+            UserDefaults.standard.setValue(email, forKey: "email")
             
             self.performSegue(withIdentifier: K.loginSegue, sender: self)
         })

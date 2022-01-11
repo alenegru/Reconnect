@@ -12,12 +12,15 @@ import JGProgressHUD
 class ConversationsViewController: UIViewController {
     @IBOutlet weak var conversationsView: UITableView!
     
+    @IBOutlet weak var navigationItemConversations: UINavigationItem!
     
     private let spinner = JGProgressHUD(style: .dark)
     
     private var conversations = [Conversation]()
     
     private var result: [String: String] = [:]
+    
+    private var model: Conversation?
     
     let db = Firestore.firestore()
     
@@ -84,6 +87,7 @@ class ConversationsViewController: UIViewController {
                 print("got conversation")
                 self?.conversations = conversations
                 DispatchQueue.main.async {
+                    print("reload data")
                     self?.conversationsView.reloadData()
                 }
             case .failure(let error):
@@ -94,24 +98,28 @@ class ConversationsViewController: UIViewController {
     
     // This function is called before the segue
     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
-
         // Get a reference to the second view controller
+        print(segue.identifier)
         if (segue.identifier == K.newChatSegue) {
             let newConversationsViewController = segue.destination as! NewConversationViewController
-
             // Set a variable in the second view controller with the String to pass
             newConversationsViewController.completion = { [weak self] result in
                 self?.result = result
+                print("RESULT")
+                print(result)
                 self?.createNewConversation()
             }
-        } else if (segue.identifier == K.chatSegue) {
+        } else if (segue.identifier! == K.chatSegue) {
             let chatViewController = segue.destination as! ChatViewController
-            guard let username = result["username"], let email = result["email"] else {
-                return
+            if model != nil {
+                chatViewController.conversationId = model?.id ?? ""
+                chatViewController.title = model?.name
+                chatViewController.otherUserEmail = model?.otherUserEmail ?? ""
+            } else {
+                chatViewController.title = result["username"]
+                chatViewController.otherUserEmail = result["email"] ?? ""
+                chatViewController.isNewConversation = true
             }
-            chatViewController.title = username
-            chatViewController.otherUserEmail = email
-            chatViewController.isNewConversation = true
         }
     }
 
@@ -147,6 +155,7 @@ extension ConversationsViewController: UITableViewDataSource, UITableViewDelegat
     
     func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
         tableView.deselectRow(at: indexPath, animated: true)
+        model = conversations[indexPath.row]
         self.performSegue(withIdentifier: K.chatSegue, sender: self)
     }
     

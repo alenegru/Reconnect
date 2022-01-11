@@ -54,7 +54,7 @@ class RegisterViewController: UIViewController {
             UserDefaults.standard.setValue(username, forKey: "username")
             
             let chatUser = User(username: username,
-                                email: email)
+                                email: email, status: "")
             DatabaseManager.shared.insertUser(with: chatUser, completion: { success in
                 if success {
                     print("success")

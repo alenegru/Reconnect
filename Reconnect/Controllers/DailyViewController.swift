@@ -16,6 +16,8 @@ class DailyViewController: UIViewController, UITableViewDelegate, UITableViewDat
     
     var hours = [Int]()
     
+    var currentUser: String = "a-b-com"
+    
     override func viewDidLoad()
     {
         getEventsForUserFromFirebase()
@@ -172,7 +174,7 @@ class DailyViewController: UIViewController, UITableViewDelegate, UITableViewDat
     func getEventsForUserFromFirebase() {
       
         events = []
-        DatabaseManager.shared.getAllEvents(for: "a-b-com", completion: {[weak self] result in
+        DatabaseManager.shared.getAllEvents(for: currentUser, completion: {[weak self] result in
             switch result {
             case .success(let events):
                 guard !events.isEmpty else {
@@ -199,7 +201,7 @@ class DailyViewController: UIViewController, UITableViewDelegate, UITableViewDat
         
         //let privateColor = UIColor(ciColor: .red)
         if(event.color == "pink"){
-            newEvent.name = "busy"
+            newEvent.name = "Busy"
         }
         else{
             newEvent.name = event.text

@@ -19,6 +19,10 @@
 		2394B73A27388CE9003FCFFE /* Sender.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2394B73927388CE8003FCFFE /* Sender.swift */; };
 		2394B73D2739255C003FCFFE /* NewConversationViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2394B73C2739255C003FCFFE /* NewConversationViewController.swift */; };
 		2394B74027399C77003FCFFE /* CalendarViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2394B73F27399C77003FCFFE /* CalendarViewController.swift */; };
+		23A5B8702782D3200035EFE5 /* WeatherModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 23A5B86F2782D3200035EFE5 /* WeatherModel.swift */; };
+		23A5B8732782D3480035EFE5 /* WeatherManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 23A5B8722782D3480035EFE5 /* WeatherManager.swift */; };
+		23A5B87A2782D8A90035EFE5 /* ProfileViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 23A5B8792782D8A90035EFE5 /* ProfileViewController.swift */; };
+		23A5B87D2782DF670035EFE5 /* WeatherData.swift in Sources */ = {isa = PBXBuildFile; fileRef = 23A5B87C2782DF670035EFE5 /* WeatherData.swift */; };
 		23D088752726AD4000F208EB /* LoginViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 23D088742726AD4000F208EB /* LoginViewController.swift */; };
 		23D088782726AD4E00F208EB /* RegisterViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 23D088772726AD4E00F208EB /* RegisterViewController.swift */; };
 		23D0887E2726AE8B00F208EB /* ConversationsViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 23D0887D2726AE8B00F208EB /* ConversationsViewController.swift */; };
@@ -53,6 +57,10 @@
 		2394B73927388CE8003FCFFE /* Sender.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Sender.swift; sourceTree = "<group>"; };
 		2394B73C2739255C003FCFFE /* NewConversationViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NewConversationViewController.swift; sourceTree = "<group>"; };
 		2394B73F27399C77003FCFFE /* CalendarViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CalendarViewController.swift; sourceTree = "<group>"; };
+		23A5B86F2782D3200035EFE5 /* WeatherModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WeatherModel.swift; sourceTree = "<group>"; };
+		23A5B8722782D3480035EFE5 /* WeatherManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WeatherManager.swift; sourceTree = "<group>"; };
+		23A5B8792782D8A90035EFE5 /* ProfileViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ProfileViewController.swift; sourceTree = "<group>"; };
+		23A5B87C2782DF670035EFE5 /* WeatherData.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WeatherData.swift; sourceTree = "<group>"; };
 		23D088742726AD4000F208EB /* LoginViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LoginViewController.swift; sourceTree = "<group>"; };
 		23D088772726AD4E00F208EB /* RegisterViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RegisterViewController.swift; sourceTree = "<group>"; };
 		23D0887D2726AE8B00F208EB /* ConversationsViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ConversationsViewController.swift; sourceTree = "<group>"; };
@@ -107,6 +115,9 @@
 				B0A772F8277A3FDC00B9FC24 /* UserEvent.swift */,
 				B05B1691277D329700C1A778 /* Event.swift */,
 				B05B1694277D32B300C1A778 /* CalendarHelper.swift */,
+				23A5B86F2782D3200035EFE5 /* WeatherModel.swift */,
+				23A5B8722782D3480035EFE5 /* WeatherManager.swift */,
+				23A5B87C2782DF670035EFE5 /* WeatherData.swift */,
 			);
 			path = Models;
 			sourceTree = "<group>";
@@ -137,6 +148,7 @@
 				B0743A99274B0B5D001EE391 /* EKWrapper.swift */,
 				B0722F79275E1D5C00A66D95 /* WeatherViewController.swift */,
 				B03F518F277D2D6500949A1D /* DailyViewController.swift */,
+				23A5B8792782D8A90035EFE5 /* ProfileViewController.swift */,
 			);
 			path = Controllers;
 			sourceTree = "<group>";
@@ -318,9 +330,12 @@
 			files = (
 				23D088752726AD4000F208EB /* LoginViewController.swift in Sources */,
 				B0722F7A275E1D5C00A66D95 /* WeatherViewController.swift in Sources */,
+				23A5B87D2782DF670035EFE5 /* WeatherData.swift in Sources */,
 				23D088782726AD4E00F208EB /* RegisterViewController.swift in Sources */,
 				B0A772F9277A3FDC00B9FC24 /* UserEvent.swift in Sources */,
+				23A5B8732782D3480035EFE5 /* WeatherManager.swift in Sources */,
 				230F58A1274B00A2003A1C61 /* Conversations.swift in Sources */,
+				23A5B87A2782D8A90035EFE5 /* ProfileViewController.swift in Sources */,
 				B05B1695277D32B300C1A778 /* CalendarHelper.swift in Sources */,
 				23D0887E2726AE8B00F208EB /* ConversationsViewController.swift in Sources */,
 				23D5E0E02722C18B0025821C /* ViewController.swift in Sources */,
@@ -335,6 +350,7 @@
 				B05B1692277D329700C1A778 /* Event.swift in Sources */,
 				B03F518C277D2CB400949A1D /* DailyCell.swift in Sources */,
 				B05B168C277D327B00C1A778 /* CalendarCell.swift in Sources */,
+				23A5B8702782D3200035EFE5 /* WeatherModel.swift in Sources */,
 				2394B6FC272F41F9003FCFFE /* Constants.swift in Sources */,
 				2394B73727387427003FCFFE /* ChatViewController.swift in Sources */,
 				B05B168F277D328B00C1A778 /* EventCell.swift in Sources */,
@@ -494,7 +510,7 @@
 					"$(inherited)",
 					"@executable_path/Frameworks",
 				);
-				PRODUCT_BUNDLE_IDENTIFIER = com.alenegru.Reconnect;
+				PRODUCT_BUNDLE_IDENTIFIER = com.alenegru.Reconnectx;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SWIFT_VERSION = 5.0;
 				TARGETED_DEVICE_FAMILY = "1,2";
@@ -514,7 +530,7 @@
 					"$(inherited)",
 					"@executable_path/Frameworks",
 				);
-				PRODUCT_BUNDLE_IDENTIFIER = com.alenegru.Reconnect;
+				PRODUCT_BUNDLE_IDENTIFIER = com.alenegru.Reconnectx;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SWIFT_VERSION = 5.0;
 				TARGETED_DEVICE_FAMILY = "1,2";
